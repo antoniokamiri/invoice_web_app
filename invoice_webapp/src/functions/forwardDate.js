@@ -1,4 +1,4 @@
-import moment from 'react-moment';
+import moment from 'moment';
 
 function getForwardDate(numberDaysForward) {
   const today = moment();
