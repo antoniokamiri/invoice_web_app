@@ -4,10 +4,15 @@ import { AnimatePresence } from 'framer-motion';
 import Center from './components/Center';
 import InvoiceInfo from './components/InvoiceInfo';
 import {useDispatch} from 'react-redux';
+import invoiceSlice from './redux/invoiceSlice';
 
 function App() {
   const location = useLocation();
   const dispatch = useDispatch();
+
+  const onDelete = (id) => {
+    dispatch(invoiceSlice.actions.deleteInvoice({id : id }))
+  }
   
   return (
     <div className='dark:bg-[#141625] bg:-[#f8f8fb] duration-300 min-h-screen'>
@@ -18,7 +23,7 @@ function App() {
         <Routes location={location} key={location.pathname}>
 
           <Route element={<Center />} path='' />
-          <Route element={<InvoiceInfo />} path='/invoice' />
+          <Route element={<InvoiceInfo onDelete={onDelete} />} path='/invoice' />
 
         </Routes>
 
